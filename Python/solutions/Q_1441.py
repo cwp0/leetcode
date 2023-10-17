@@ -7,6 +7,8 @@
 # @Version: 1.0
 
 """
+ https://leetcode.cn/problems/build-an-array-with-stack-operations/submissions/475013384/
+
 给你一个数组 target 和一个整数 n。每次迭代，需要从  list = { 1 , 2 , 3 ..., n } 中依次读取一个数字。
 
 请使用下述操作来构建目标数组 target ：
