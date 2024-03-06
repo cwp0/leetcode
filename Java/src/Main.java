@@ -1,30 +1,30 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        int[] target = {1,2};
-        int n = 4;
-        System.out.println(TAMPLATE(target, n));
+
+        ArrayList<String> strs = new ArrayList<>();
+        strs.isEmpty();
+        strs.add("1");
+        strs.size();
+        strs.get(0);
+
+        LinkedList<Integer> nums = new LinkedList<>();
+        nums.isEmpty();
+        nums.size();
+        nums.contains(1);
+        nums.add(1);
+        nums.addFirst(2);
+        nums.addLast(3);
+        nums.remove(1);
+        nums.removeFirst();
+        nums.removeLast();
+
+
+
     }
 
-    public static List<String> TAMPLATE(int[] target, int n) {
-        List<String> list = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        int j = 0;
-        for (int i = 1; i <= n; i++) {
-            if (j == target.length) {
-                break;
-            }
-            if (i == target[j]) {
-                list.add("\"Push\"");
-                j++;
-            } else {
-                list.add("\"Push\"");
-                list.add("\"Pop\"");
-            }
-        }
-        return list;
-    }
 
 }
