@@ -75,7 +75,33 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        
+        ListNode fast, slow;
+        fast = head;
+        slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if (fast == slow) {
+                // fast 和 slow 相遇时，跳出循环。
+                break;
+            }
+        }
+
+        if (fast == null || fast.next == null) {
+            // 如果 fast 指针为空，则说明链表到了结尾，没有环。
+            return null;
+        }
+
+        // 其他情况就是链表有环的情况，让 slow 指针重新指向 head 指针
+        slow = head;
+        while (fast != slow) {
+            // fast 指针和 slow 指针同时前进，相遇点就是环的起始部位。
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        return slow;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
