@@ -1,0 +1,24 @@
+class Solution {
+    public int Palindrome(String s, int left, int right) {
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        //返回以初始的left、right为回文中心向两边扩后的回文子串最大长度
+        return right-left-1;
+    }
+    public String longestPalindrome(String s) {
+        int maxlen = 0, left = 0, right = 0;
+        for(int i = 0; i < s.length(); i++) {
+            if(Math.max(Palindrome(s,i,i), Palindrome(s,i,i+1)) > maxlen) {
+                maxlen = Math.max(Palindrome(s,i,i), Palindrome(s,i,i+1));
+                //以i为中点，分别向左、向右移动maxlen的一半，定位子串
+                left = i-(maxlen-1)/2;
+                right = i+maxlen/2;
+            }
+        }
+        return s.substring(left,right+1);
+    }
+}
+//runtime:24 ms
+//memory:41.6 MB
