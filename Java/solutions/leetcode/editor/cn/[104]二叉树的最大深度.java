@@ -64,7 +64,7 @@ class Solution {
         return res;
     }
 
-    public void traverse(TreeNode root) {
+    private void traverse(TreeNode root) {
         if (root == null) {
             return;
         }
