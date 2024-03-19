@@ -82,7 +82,7 @@ class Solution {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
 
-        // 删除倒数第 n 个结点，要先找到该结点前面的结点，即正数第 n-1 个结点，然而这时候使用dummy增加了一个结点，所以此时正数第 n-1 个结点变为正数第 n 个结点。
+        // 这里有点疑问？
         ListNode tar = findFromEnd(dummy, n); // 注意这里使用dummy的技巧，巧妙利用dummy，不用分开讨论删除头结点的情况。
         // 找到要删除的结点的前面的结点，然后让其指向该结点所指向的结点，跳过该结点，就等于删除。
         tar.next = tar.next.next;
