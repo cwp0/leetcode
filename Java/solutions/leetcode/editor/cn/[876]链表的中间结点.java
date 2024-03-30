@@ -1,6 +1,6 @@
 // 
 // @Question: [876]链表的中间结点 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-08 10:28:53
 // @Description: 
 //给你单链表的头结点 head ，请你找出并返回链表的中间结点。 

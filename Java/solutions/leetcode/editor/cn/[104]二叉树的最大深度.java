@@ -1,6 +1,6 @@
 // 
 // @Question: [104]二叉树的最大深度 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-11 21:53:55
 // @Description: 
 //给定一个二叉树 root ，返回其最大深度。 

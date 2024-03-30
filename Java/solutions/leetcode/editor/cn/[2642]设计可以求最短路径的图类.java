@@ -1,6 +1,6 @@
 // 
 // @Question: [2642]设计可以求最短路径的图类 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-26 21:49:15
 // @Description: 
 //给你一个有 n 个节点的 有向带权 图，节点编号为 0 到 n - 1 。图中的初始边用数组 edges 表示，其中 edges[i] = [fromi, 

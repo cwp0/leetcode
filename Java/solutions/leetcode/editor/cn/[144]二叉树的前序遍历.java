@@ -1,6 +1,6 @@
 // 
 // @Question: [144]二叉树的前序遍历 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-12 16:58:46
 // @Description: 
 //给你二叉树的根节点 root ，返回它节点值的 前序 遍历。 

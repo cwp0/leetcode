@@ -1,6 +1,6 @@
 // 
 // @Question: [139]单词拆分 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-21 20:49:48
 // @Description: 
 //给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。 

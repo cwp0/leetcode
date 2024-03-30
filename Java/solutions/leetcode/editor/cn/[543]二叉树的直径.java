@@ -1,6 +1,6 @@
 // 
 // @Question: [543]二叉树的直径 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-12 21:47:42
 // @Description: 
 //给你一棵二叉树的根节点，返回该树的 直径 。 

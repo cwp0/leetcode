@@ -1,6 +1,6 @@
 // 
 // @Question: [1367]二叉树中的链表 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-12 17:44:31
 // @Description: 
 //给你一棵以 root 为根的二叉树和一个 head 为第一个节点的链表。 

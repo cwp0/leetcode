@@ -1,6 +1,6 @@
 // 
 // @Question: [2671]频率跟踪器 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-21 10:46:45
 // @Description: 
 //请你设计并实现一个能够对其中的值进行跟踪的数据结构，并支持对频率相关查询进行应答。 

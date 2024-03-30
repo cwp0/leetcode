@@ -1,6 +1,6 @@
 // 
 // @Question: [5]最长回文子串 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-11 11:40:38
 // @Description: 
 //给你一个字符串 s，找到 s 中最长的回文子串。 

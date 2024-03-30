@@ -1,6 +1,6 @@
 // 
 // @Question: [142]环形链表 II 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-08 22:32:05
 // @Description: 
 //给定一个链表的头节点 head ，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。 

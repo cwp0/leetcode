@@ -1,6 +1,6 @@
 // 
 // @Question: [300]最长递增子序列 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-24 22:13:14
 // @Description: 
 //给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。 

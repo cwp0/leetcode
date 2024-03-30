@@ -1,6 +1,6 @@
 // 
 // @Question: [27]移除元素 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-11 10:53:37
 // @Description: 
 //给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。 

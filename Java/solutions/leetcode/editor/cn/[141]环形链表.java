@@ -1,6 +1,6 @@
 // 
 // @Question: [141]环形链表 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-08 10:51:33
 // @Description: 
 //给你一个链表的头节点 head ，判断链表中是否有环。 

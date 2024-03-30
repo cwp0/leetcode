@@ -1,6 +1,6 @@
 // 
 // @Question: [83]删除排序链表中的重复元素 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-10 17:51:04
 // @Description: 
 //给定一个已排序的链表的头

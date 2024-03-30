@@ -1,6 +1,6 @@
 // 
 // @Question: [23]合并 K 个升序链表 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-07 21:06:32
 // @Description: 
 //给你一个链表数组，每个链表都已经按升序排列。 

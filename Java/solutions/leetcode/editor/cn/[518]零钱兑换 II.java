@@ -1,6 +1,6 @@
 // 
 // @Question: [518]零钱兑换 II 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-25 11:16:44
 // @Description: 
 //给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。 

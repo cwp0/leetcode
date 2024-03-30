@@ -1,6 +1,6 @@
 // 
 // @Question: [167]两数之和 II - 输入有序数组 
-// @Auther: cwp0
+// @Author: cwp0
 // @CreatedTime: 2024-03-11 11:20:49
 // @Description: 
 //给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列 ，请你从数组中找出满足相加之和等于目标数 target 的两个数。如果设这
