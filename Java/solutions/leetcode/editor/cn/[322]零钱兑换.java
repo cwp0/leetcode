@@ -43,32 +43,39 @@
 //
 // Related Topics 广度优先搜索 数组 动态规划 👍 2734 👎 0
 
+import java.util.Arrays;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    int[] memory;
+    int[] memo;
     public int coinChange(int[] coins, int amount) {
-        memory = new int[amount + 1];
-        Arrays.fill(memory, -100);
-
-        return dynamicProgramming(coins, amount);
+        memo = new int[amount + 1];
+        Arrays.fill(memo, -100);
+        return dp(coins, amount);
     }
 
-    private int dynamicProgramming(int[] coins, int amount) {
+    private int dp(int[] coins, int amount) {
         if (amount == 0) return 0;
         if (amount < 0) return -1;
-        if (memory[amount] != -100) return memory[amount];
-        int res = Integer.MAX_VALUE;
-        for (int coin : coins) {
-            // 子问题求解
-            int subProblem = dynamicProgramming(coins, amount - coin);
 
-            if (subProblem == -1) continue;
-            res = Math.min(res, subProblem + 1);
-
+        if (memo[amount] != -100) {
+            return memo[amount];
         }
-        memory[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
-        return memory[amount];
+
+        int res = Integer.MAX_VALUE;
+
+        for (int coin : coins) {
+            int subProblem = dp(coins, amount - coin);
+            if (subProblem == -1) continue;
+
+            res = Math.min(res, subProblem + 1);
+        }
+
+        memo[amount] = (res == Integer.MAX_VALUE) ? -1 : res;
+
+        return memo[amount];
     }
+
 
 }
 //leetcode submit region end(Prohibit modification and deletion)
