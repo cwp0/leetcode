@@ -1,7 +1,9 @@
+package ds;
+
 /**
  * @Program: Java
  * @Package: PACKAGE_NAME
- * @Class: ListNode
+ * @Class: ds.ListNode
  * @Description: Definition for singly-linked list.
  * @Author: cwp0
  * @CreatedTime: 2024/03/10 15:30

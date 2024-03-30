@@ -1,7 +1,9 @@
+package ds;
+
 /**
  * @Program: Java
  * @Package: PACKAGE_NAME
- * @Class: TreeNode
+ * @Class: ds.TreeNode
  * @Description: Definition for a binary tree node.
  * @Author: cwp0
  * @CreatedTime: 2024/03/12 16:16
