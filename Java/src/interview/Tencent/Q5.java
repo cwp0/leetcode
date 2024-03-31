@@ -11,6 +11,17 @@ import java.util.*;
  * @CreatedTime: 2024/03/31 21:25
  * @Version: 1.0
  */
+
+/*
+3 3
+1 2 3
+1 2 3
+1 2 3
+RPR
+PRP
+RPR
+ */
+
 public class Q5 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -25,6 +36,7 @@ public class Q5 {
             }
         }
 
+        in.nextLine(); // 注意这里的关键是这里nextInt()后的换行。
         char[][] colors = new char[n][m];
         for (int i = 0; i < n; i++) {
             String line = in.nextLine();
