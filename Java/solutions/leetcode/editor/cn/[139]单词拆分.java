@@ -47,21 +47,52 @@
 //
 // Related Topics 字典树 记忆化搜索 数组 哈希表 字符串 动态规划 👍 2446 👎 0
 
+import java.util.*;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    // 使用哈希集合快速判断前缀是否被单词字典包含
+    HashSet<String> wordDict;
+    // 备忘录
+    int[] memo;
+
     public boolean wordBreak(String s, List<String> wordDict) {
-        return dynamicProgramming(s, wordDict);
+        this.wordDict = new HashSet<>(wordDict);
+
+        memo = new int[s.length()];
+        // -1: 未计算, 0: s[i..]无法被拼凑出,1: s[i..]可以被拼凑出
+        Arrays.fill(memo, -1);
+
+        return dp(s, 0);
     }
 
-    private boolean dynamicProgramming(String s, List<String> wordDict) {
-        // 如果字符串长度为0
-        if (s.length() == 0) return true;
-        // 如果剩余的字符串不能包含wordDict中的单词，则返回false
+    // 定义dp[s, i]数组为s[i..]是否可以被wordDict中的单词拼出
+    private boolean dp(String s, int i) {
 
-        for (String word : wordDict) {
-            dynamicProgramming(s.substring(0, ));
+        // base case
+        // i 已经走到最后了，可以拼出
+        if (i == s.length()) return true;
+
+        if (memo[i] != -1) {
+            return memo[i] != 0;
         }
 
+        // 状态转移函数
+        for (int len = 1; i + len <= s.length(); len++) {
+            String prefix = s.substring(i, i + len);
+            // 如果prefix包含在wordDict中
+            if (wordDict.contains(prefix)) {
+                // s[i+len..]可以被拼凑出，则s[i..]也可以被拼凑出
+                if (dp(s, i + len)) {
+                    memo[i] = 1;
+                    return true;
+                }
+            }
+
+        }
+        memo[i] = 0;
+        return false;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
