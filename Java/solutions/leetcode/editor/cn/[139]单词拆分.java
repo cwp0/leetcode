@@ -52,9 +52,9 @@ import java.util.*;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     // 使用哈希集合快速判断前缀是否被单词字典包含
-    HashSet<String> wordDict;
+    private HashSet<String> wordDict;
     // 备忘录
-    int[] memo;
+    private int[] memo;
 
     public boolean wordBreak(String s, List<String> wordDict) {
         this.wordDict = new HashSet<>(wordDict);

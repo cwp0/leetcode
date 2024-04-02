@@ -46,7 +46,7 @@ class Solution {
         // 注意这里的l+1，原因是前面的while循环在s.charAt(l) == s.charAt(r)执行之前会l--和r++，在不满足前面条件时，已经进行了l--和r++，所以需要加回来。
         return s.substring(l+1, r);
     }
-    public String longestPalindrome(String s) {
+    private String longestPalindrome(String s) {
         String res = "";
         for (int i = 0; i < s.length(); i ++) {
             // 以 s[i] 为中心的最长回文子串

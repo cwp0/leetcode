@@ -51,7 +51,7 @@ import java.util.*;
 
 class Solution {
     // 备忘录
-    int[][] memo;
+    private int[][] memo;
     public int numDistinct(String s, String t) {
         // 备忘录
         memo = new int[s.length()][t.length()];

@@ -56,9 +56,9 @@
  */
 class Solution {
     // 记录最大深度
-    public int res = 0;
+    private int res = 0;
     // 记录遍历到的叶子结点的最大深度
-    public int deepth = 0;
+    private int deepth = 0;
     public int maxDepth(TreeNode root) {
         traverse(root);
         return res;

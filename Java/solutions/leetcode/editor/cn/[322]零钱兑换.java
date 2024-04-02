@@ -47,7 +47,7 @@ import java.util.Arrays;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    int[] memo;
+    private int[] memo;
     public int coinChange(int[] coins, int amount) {
         memo = new int[amount + 1];
         Arrays.fill(memo, -100);

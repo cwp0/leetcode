@@ -54,7 +54,7 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    int[] memo;
+    private int[] memo;
     public int fib(int n) {
         memo = new int[n+1];
         Arrays.fill(memo, -100);
