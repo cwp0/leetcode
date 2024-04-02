@@ -1,5 +1,7 @@
 package utils;
 
+import java.sql.SQLOutput;
+
 /**
  * @Program: Java
  * @Package: utils
@@ -14,7 +16,9 @@ public class Utils {
     public static void main(String[] args) {
         System.out.println(reverseStr("apple"));
         System.out.println(reverseStr1("apple"));
-
+        System.out.println(isPalindrome("aabbaa"));
+        String s = "abcd";
+        System.out.println(s.substring(0, 0));
     }
 
     /**
@@ -56,15 +60,12 @@ public class Utils {
         return res.toString();
     }
 
-    /**
-     * @Description: 返回回文子串
-     * @Param: str      {java.lang.String}
-     * @Return: java.lang.String
-     * @Author: cwp0
-     * @CreatedTime: 2024/4/1 23:18
-     */
-    private static String findHuiWen(String str) {
-
-        return null;
+    private static boolean isPalindrome(String s) {
+        for (int i = 0; i < s.length()/2; i++) {
+            if (s.charAt(i) != s.charAt(s.length()-1-i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
