@@ -60,28 +60,30 @@
 class Solution {
     public int change(int amount, int[] coins) {
         int n = coins.length;
+        // 定义dp[i][j]为只使用coins中前i个硬币可以凑出的硬币组合数
+        int[][] dp = new int[n+1][amount+1];
 
-        // dp[i][j]表示只使用前i种硬币，可以凑出金额j的方案数
-        int[][] dp = new int[n + 1][amount + 1];
-
-        // base case 金额为0的凑法只有一种，那就是什么都不做。
+        // base case
+        // 金币数为0 时，除了0意外，任何数量都抽不出来dp[0][i] = 0
+        // 要凑出的金额为0时，只能有一种办法，那就是不使用任何金币
         for (int i = 0; i <= n; i++) {
             dp[i][0] = 1;
         }
 
+        // 状态转移函数
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= amount; j++) {
-                // 如果使用了第i个硬币，。。。看不太懂啊。。
-                if (j - coins[i-1] >= 0)
-                    dp[i][j] = dp[i-1][j] + dp[i][j - coins[i-1]];
-                else
-                    // 如果不使用第i个硬币，则凑出面额j的方法继承前面结果
+                if (j < coins[i-1]) {
+                    //  如果剩余的金额硬币值小于第i个硬币值，则不能凑出，不使用该硬币值
                     dp[i][j] = dp[i-1][j];
+                } else {
+                    // 不使用第i枚硬币凑出j的组合数+使用前i枚硬币凑出j-coins[i-1]的组合数？
+                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]];
+                }
             }
         }
 
         return dp[n][amount];
-
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
