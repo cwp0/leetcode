@@ -52,38 +52,44 @@
 // 空间复杂度：O()
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    private int res = 0;
+    // https://labuladong.online/algo/dynamic-programming/target-sum/#%E4%B8%89%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92
     public int findTargetSumWays(int[] nums, int target) {
-        backtrace(nums, 0, target);
-        return res;
-    }
-
-    // 回溯
-    private void backtrace(int[] nums, int i, int remain) {
-        if (i == nums.length) {
-            // 如果i到达nums的长度，则证明匹配结束，remain如果为0，则结果+1
-            if (remain == 0) {
-                res++;
-            }
-            return ;
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if (sum < Math.abs(target) || (sum + target) % 2 == 1) {
+            return 0;
         }
 
-        // 第i个数字添加+号
-        remain -= nums[i];
-        // 使用回溯穷举所有可能结果
-        backtrace(nums, i+1, remain);
-        // 撤销对第i个数的操作
-        remain += nums[i];
+        return subSets(nums, (sum + target) / 2);
+    }
 
+    // 计算nums中有几个子集的和为num
+    private int subSets(int[] nums, int num) {
+        int n = nums.length;
+        // 定义dp[i][j]为 使用nums前i个数字是否可以凑出j
+        int[][] dp = new int[n+1][num+1];
 
-        // 第i个数字添加-号
-        remain += nums[i];
-        // 使用回溯穷举所有可能结果
-        backtrace(nums, i+1, remain);
-        // 撤销对第i个数的操作
-        remain -= nums[i];
+        // base case
+        // 如果 nums的长度为0，则肯定凑不出来j，即dp[0][..] = 0，除了dp[0][0]
+        dp[0][0] = 1;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= num; j++) {
+                if (j < nums[i-1]) {
+                    // 不能使用当前第i个数字
+                    dp[i][j] = dp[i-1][j];
+                } else {
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i-1]];
+                }
+            }
+        }
+
+        return dp[n][num];
 
     }
+
 
 }
 //leetcode submit region end(Prohibit modification and deletion)
