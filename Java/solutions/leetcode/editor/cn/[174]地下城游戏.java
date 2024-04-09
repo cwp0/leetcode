@@ -48,31 +48,44 @@
 //
 // Related Topics 数组 动态规划 矩阵 👍 824 👎 0
 
+import java.util.*;
+
 // 时间复杂度：O()
 // 空间复杂度：O()
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    private int[][] memo;
     public int calculateMinimumHP(int[][] dungeon) {
         int m = dungeon.length, n = dungeon[0].length;
-        int[][] dp = new int[m+1][n+1];
-        // base case
-        for (int i = 0; i <= m; i ++) {
-            dp[i][n] = Integer.MAX_VALUE;
+        memo = new int[m][n];
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
         }
-        for (int j = 0; j <= n; j ++) {
-            dp[m][j] = Integer.MAX_VALUE;
-        }
-        dp[m-1][n-1] = dungeon[m - 1][n - 1] < 0 ?  1 - dungeon[m - 1][n - 1] : 1;  // 保证最低血量为正数
-
-        for (int i = m - 1; i >= 0; i --) {
-            for (int j = n - 1; j >= 0; j --) {
-                if (i == m - 1 && j == n - 1) continue;
-
-                int val = Math.min(dp[i+1][j], dp[i][j+1]) - dungeon[i][j];
-                dp[i][j] = val <= 0 ? 1 : val;  // 保证出生在[i,j]的最低血量为正数
-            }
-        }
-        return dp[0][0];
+        return dp(dungeon, 0, 0);
     }
+
+    // 定义dp[i][j]为从(i, j)到右下角，需要的最少血量是多少
+    private int dp(int[][] grid, int i, int j) {
+        int m = grid.length;
+        int n = grid[0].length;
+        // base case
+        if (i == m - 1 && j == n - 1) {
+            return grid[i][j] >= 0 ? 1 : -grid[i][j] + 1;
+        }
+        // 处理边界
+        if (i == m || j == n) {
+            return Integer.MAX_VALUE;
+        }
+        // 避免重复计算
+        if (memo[i][j] != -1) {
+            return memo[i][j];
+        }
+        // 状态转移函数
+        int res = Math.min(dp(grid, i+1, j), dp(grid, i, j+1)) - grid[i][j];
+        memo[i][j] = res > 0 ? res : 1;
+
+        return memo[i][j];
+    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
