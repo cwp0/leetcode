@@ -26,5 +26,15 @@ public class TestHashMap {
             map.get(c).add(i);
         }
         System.out.println(map);
+
+        // 用于记录需要的字符和窗口中的字符及其出现的次数
+        Map<Character, Integer> need = new HashMap<>();
+        // 统计 s 中各字符出现次数
+        for (char c : s.toCharArray()) {
+            need.put(c, need.getOrDefault(c, 0) + 1);
+            System.out.println(c);
+            System.out.println(need.getOrDefault(c, 0));
+        }
+        System.out.println(need);
     }
 }
