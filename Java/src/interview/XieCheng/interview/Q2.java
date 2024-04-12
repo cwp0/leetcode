@@ -48,7 +48,7 @@ public class Q2 {
 
         traverse(root, p);
 
-        return dummy.next;
+        return dummy.next.next;
     }
 
     private static void traverse(TreeNode root, Node p) {
