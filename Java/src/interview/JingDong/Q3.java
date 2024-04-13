@@ -1,4 +1,4 @@
-package interview.MeiTuan;
+package interview.JingDong;
 
 import java.util.*;
 
