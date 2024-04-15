@@ -22,7 +22,7 @@ public class Singleton {
     public static Singleton getUniqueInstance() {
         // 第一层检查：首先检查 uniqueInstance 是否为 null。如果不是 null，意味着实例已经被创建，则直接返回这个实例。
         if (uniqueInstance == null) {
-            // 类对象加锁
+            // 类对象加锁，表示进入同步代码前要获得 Singleton类 的锁
             synchronized (Singleton.class) {
                 // 第二层检查：在同步代码块内再次检查 uniqueInstance 是否为 null。
                 // 这种双重检查是为了在等待锁的线程获取到锁后再次确认实例是否已经被创建，因为在等待锁的过程中可能有其他线程已经创建了实例。
