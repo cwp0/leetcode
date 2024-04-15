@@ -55,54 +55,45 @@ import java.util.Arrays;
 // 空间复杂度：O()
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    // 备忘录
     private int[][] memo;
     public int superEggDrop(int k, int n) {
         memo = new int[k+1][n+1];
         for (int[] row : memo) {
             Arrays.fill(row, -1);
         }
-
         return dp(k, n);
     }
 
-    // 定义dp(K, N)为为给定K枚鸡蛋，共有N层建筑，确定f确切值需要的最小操作次数
+    // 定义dp[K][N]为给定K枚鸡蛋，共有N层楼，确定f确切的值的最小操作次数
     private int dp(int K, int N) {
         // base case
-        // 如果只有一枚鸡蛋，那么只能从第一层一层一层的尝试
+        // 如果K为1，只能从最底层一层一层的尝试
         if (K == 1) return N;
-        // 当楼层为0时，不需要扔鸡蛋就确定了
+        // 层数为0，不用尝试
         if (N == 0) return 0;
 
-        if (memo[K][N] != -1) {
-            return memo[K][N];
-        }
+        if (memo[K][N] != -1) return memo[K][N];
 
         int res = Integer.MAX_VALUE;
-        // 状态转移函数 ，注意这里的i取之范围
-//        for (int i = 1; i <= N; i++) {
-//            // 在第i层碎了/没碎
-//            res = Math.min(res, Math.max(dp(K-1, i-1), dp(K, N-i)) + 1);
-//        }
-
-        // 上面超时过不了，使用二分搜索代替线性搜索
-        int lo = 1, hi = N;
-        while (lo <= hi) {
-            int mid = (lo+hi)/2;
-            // 鸡蛋在mid层分为碎了和没碎两种情况
+        // 状态转移函数
+        // 二分搜索，加快搜索
+        int low = 1, high = N;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            // 中间层分鸡蛋碎了和没碎两种情况
+            // 碎了的话就说明f在更底层，此时共有mid-1层楼，这里的-1是为了排除mid层
             int broken = dp(K-1, mid-1);
+            // 如果没碎，说明f在更高层，此时共有N-mid层楼，+1同上
             int not_broken = dp(K, N-mid);
-            // 取两者中较大的那个
             if (broken > not_broken) {
-                // 如果碎了，hi = mid - 1
-                hi = mid - 1;
+                high = mid - 1;
                 res = Math.min(res, broken + 1);
             } else {
-                // 如果没碎，则lo = mid + 1,这里+1排除mid层
-                lo = mid + 1;
+                low = mid + 1;
                 res = Math.min(res, not_broken + 1);
             }
         }
-
         memo[K][N] = res;
         return res;
     }
