@@ -70,33 +70,33 @@ class Solution {
         for (int[] row : memo) {
             Arrays.fill(row, -1);
         }
-
         return dp(text1, 0, text2, 0);
     }
 
-    // 定义dp[s1, i, s2, j]为s1[i..]和s2[j..]的最长公共子序列
+    // 定义dp(s1, i, s2, j) 为si[i..] 和s2[j..]的最长公共子序列长度
     private int dp(String s1, int i, String s2, int j) {
         // base case
-        // 相当于是s1 最右边的空串 和s2 最右边的空串的最长公共子序列，为0
+        // 如果i或者j在最尾部，空字符串与任何字符串的最长公共子序列长度都为0
         if (i == s1.length() || j == s2.length()) return 0;
 
-        if (memo[i][j] != -1) {
-            return memo[i][j];
-        }
+        if (memo[i][j] != -1) return memo[i][j];
 
+        int res = 0;
         // 状态转移函数
         if (s1.charAt(i) == s2.charAt(j)) {
-            // 如果s1在i处的字符和s2在j处的字符相等，则该字符必定属于最长公共子序列，长度+1，s1、s2都前进向下一字符比较
-            memo[i][j] = 1 + dp(s1, i+1, s2, j+1);
+            res = dp(s1, i+1, s2, j+1) + 1;
         } else {
-            // 如果s1在i处的字符和s2在j处的字符不相等，三种情况:
-            // 1. s1在i处的字符不属于最长公共子序列，但s2所在j处的字符属于最长公共子序列，则s1前进至下一字符
-            // 2. s2在j处的字符不属于最长公共子序列，但s1所在i处的字符属于最长公共子序列，则s2前进至下一字符
-            // 3. s1在i处的字符和s2在j处的字符都不属于最长公共子序列，但这种情况下最长公共子序列的长度肯定没有前两种长，忽略dp(s1, i+1, s2, j+1)
-            memo[i][j] = Math.max(dp(s1, i+1, s2, j), dp(s1, i, s2, j+1));
+            // 三种情况
+            // 1 s1在i处的字符不属于最长公共子序列，但s2在j处的字符属于最长公共子序列
+            // 2 s1在i处的字符属于最长公共子序列，但s2在j处的字符不属于最长公共子序列
+            // 3 都不属于最长公共子序列
+            res = Math.max(dp(s1, i+1, s2, j), dp(s1, i, s2, j+1));
+//            res = Math.max(res, dp(s1, i+1, s2, j+1));
         }
-        return memo[i][j];
+        memo[i][j] = res;
+        return res;
     }
+
 
 }
 //leetcode submit region end(Prohibit modification and deletion)
