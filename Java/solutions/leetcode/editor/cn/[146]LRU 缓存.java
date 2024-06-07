@@ -76,12 +76,12 @@ class LRUCache {
 
     public LRUCache(int capacity) {
         this.cap = capacity;
-        this.cache = new LinkedHashMap<>();
+        this.cache = new LinkedHashMap<>(capacity,1, true);
     }
     
     public int get(int key) {
         if (!cache.containsKey(key)) return -1;
-        makeRecent(key);
+//        makeRecent(key);
         return cache.get(key);
     }
     
@@ -89,7 +89,7 @@ class LRUCache {
         // 如果cache中存在key
         if (cache.containsKey(key)) {
             cache.put(key, value);
-            makeRecent(key);
+//            makeRecent(key);
             return ;
         }
 
@@ -103,11 +103,11 @@ class LRUCache {
     }
 
     // 让key变为最近使用的
-    private void makeRecent(int key) {
-        int val = cache.get(key);
-        cache.remove(key);
-        cache.put(key, val);
-    }
+//    private void makeRecent(int key) {
+//        int val = cache.get(key);
+//        cache.remove(key);
+//        cache.put(key, val);
+//    }
 
 }
 
