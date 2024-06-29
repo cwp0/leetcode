@@ -44,22 +44,18 @@ class Solution {
         int n = height.length;
         if (n == 0) return 0;
         int res = 0;
-        // 备忘录记录每个位置左右柱子高度的最大值
-        int[] l_max = new int[n];
-        int[] r_max = new int[n];
-        l_max[0] = height[0];
-        r_max[n-1] = height[n-1];
-        // 从左到右计算l_max
-        for (int i = 1; i < n; i++) {
-            l_max[i] = Math.max(height[i], l_max[i-1]);
-        }
-        // 从右往左计算r_max
-        for (int i = n-2; i >= 0; i--) {
-            r_max[i] = Math.max(height[i], r_max[i+1]);
-        }
-        // 计算答案
-        for (int i = 1; i < n-1; i++) {
-            res += Math.min(l_max[i], r_max[i]) - height[i];
+        int left = 0, right = height.length - 1;
+        int l_max = 0, r_max = 0;
+        while (left < right) {
+            l_max = Math.max(l_max, height[left]);
+            r_max = Math.max(r_max, height[right]);
+            if (l_max < r_max) {
+                res += l_max - height[left];
+                left++;
+            } else {
+                res += r_max - height[right];
+                right--;
+            }
         }
         return res;
     }
