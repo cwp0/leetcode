@@ -61,6 +61,7 @@ class Solution {
     public boolean[] isArraySpecial(int[] nums, int[][] queries) {
         int[] pre = new int[nums.length];
         for (int i = 1; i < nums.length; i++) {
+            // 前缀和数组
             pre[i] = pre[i-1] + (nums[i-1] % 2 == nums[i] % 2 ? 1 : 0);
         }
         boolean[] res = new boolean[queries.length];
