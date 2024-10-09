@@ -17,7 +17,7 @@ public class Q2 {
 
         while (scanner.hasNextLine()) {
             String str = scanner.nextLine();
-            String[] parts = str.split("(?<=ali)/(?=ali)");
+            String[] parts = str.split("(?<=ali)｜(?=ali)");
             String[] arr = new String[parts.length];
             StringBuilder res = new StringBuilder();
 
